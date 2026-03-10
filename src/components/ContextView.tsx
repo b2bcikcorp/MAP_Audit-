@@ -16,7 +16,6 @@ export function ContextView() {
     <div className="space-y-6">
       <HeroSlide />
       <MissionSlide />
-      <ObservationsSlide />
       <TimelineSlide />
       <SessionSlide />
     </div>
