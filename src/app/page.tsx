@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { RotateCcw } from 'lucide-react';
+import { RotateCcw, Download } from 'lucide-react';
 import { ContextView } from '@/components/ContextView';
 import { Dashboard } from '@/components/Dashboard';
 import { AuditGrid } from '@/components/AuditGrid';
@@ -32,7 +32,7 @@ function useProgress() {
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState<Tab>('context');
-  const { resetAll } = useAudit();
+  const { state, resetAll } = useAudit();
   const { evaluated, total, pct } = useProgress();
 
   return (
@@ -66,6 +66,21 @@ export default function Home() {
             <span className="text-xs text-slate-400 font-medium tabular-nums">
               {evaluated}/{total}
             </span>
+            <button
+              onClick={() => {
+                const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `mapig-audit-export-${new Date().toISOString().slice(0, 10)}.json`;
+                a.click();
+                URL.revokeObjectURL(url);
+              }}
+              className="w-8 h-8 flex items-center justify-center rounded-lg text-slate-400 hover:text-indigo-500 hover:bg-indigo-50/80 transition-colors"
+              title="Exporter les données"
+            >
+              <Download size={15} />
+            </button>
             <button
               onClick={resetAll}
               className="w-8 h-8 flex items-center justify-center rounded-lg text-slate-400 hover:text-rose-500 hover:bg-rose-50/80 transition-colors"
