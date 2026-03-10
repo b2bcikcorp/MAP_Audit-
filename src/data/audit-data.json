@@ -7,35 +7,23 @@
         "items": [
           {
             "element": "Structure générale page d'accueil",
-            "observation": "Hub-and-spoke = bon pattern mais potentiellement trop complexe pour 2 personnes. [TAD] Des endroits sont complètement utilisés, d'autres pas du tout."
+            "observation": "Hub-and-spoke = bon pattern mais potentiellement trop complexe pour 2 personnes. Des endroits sont complètement utilisés, d'autres pas du tout."
           },
           {
             "element": "Synced nav bar — fonctionnement",
-            "observation": "Pattern intelligent MAIS avec 2 users qui n'utilisent pas Notion → savent-ils que ça existe?"
+            "observation": "Pattern intelligent MAIS avec 2 users qui n'utilisent pas Notion."
           },
           {
             "element": "Système 4 couleurs / 4 piliers",
-            "observation": "4 piliers pour 2 personnes — peut-être fusionner en 2-3 max. [TAD] Philosophie: diminuer le noise, less is more."
+            "observation": "4 piliers pour 2 personnes — peut-être fusionner en 2-3 max. Philosophie: diminuer le noise, less is more."
           },
           {
             "element": "Calendrier / Widget home page",
-            "observation": "[TAD] Le calendrier sur la home page est une base de données VIDE DB_MAP_Widget = une seule propriété 'Nom' → probablement jamais configuré."
+            "observation": "Le calendrier sur la home page est une base de données VIDE DB_MAP_Widget = une seule propriété 'Nom' → probablement jamais configuré."
           },
           {
             "element": "Icônes gray set — cohérence",
             "observation": "Beau travail de design du consultant d'origine. Vérifier que rien n'a été cassé."
-          },
-          {
-            "element": "Onboarding / guide utilisateur",
-            "observation": "Aucune page d'aide visible dans le blueprint. [TAD] À quelle étape a été créé le Notion et avec quelles précisions de leur part?"
-          },
-          {
-            "element": "Où sont la to-do et les Excels?",
-            "observation": "L'équipe travaille sur Excel pour: tâches, responsables, statut, commentaires post-réunion chantier. [TAD] Où est la to-do et les Excels? Gestion actuelle = fichiers Excel sur réseau interne."
-          },
-          {
-            "element": "Préférence utilisateur: vues",
-            "observation": "[TAD] Préférez-vous peu de vues complètes ou plein de petites vues précises? (possible avec nouvelles bases Notion)."
           }
         ]
       }
@@ -48,10 +36,6 @@
         "pageName": "Ma journée",
         "items": [
           {
-            "element": "Synced nav bar",
-            "observation": ""
-          },
-          {
             "element": "Bouton ajout rapide tâche",
             "observation": "CLEF pour l'adoption. Si pas simple → retour sur Excel."
           },
@@ -61,19 +45,15 @@
           },
           {
             "element": "Colonnes affichées vs Excel",
-            "observation": "Dans Excel ils suivent: tâches, responsables, statut, commentaires. Notion doit montrer AU MOINS ça."
+            "observation": "Dans Excel vous suivez: tâches, responsables, statut, commentaires. Notion doit montrer AU MOINS ça."
           },
           {
-            "element": "Tri et groupement",
+            "element": "Tri et filtre",
             "observation": "Besoin exprimé: 'visibilité hebdomadaire'. Tri par date/semaine probablement plus utile que par statut."
           },
           {
             "element": "Adoption réelle",
-            "observation": "Combien de fois/semaine ouvrent-ils cette page? Probable: jamais, car Excel."
-          },
-          {
-            "element": "Fusion Ma journée + Vue équipes",
-            "observation": "[TAD] Pourquoi avoir une vue équipe quand on est 2? Si tout de même, la mettre dans la même vue."
+            "observation": "Combien de fois/semaine ouvrez-vous cette page? Probable: jamais, car Excel."
           }
         ]
       },
@@ -82,11 +62,19 @@
         "items": [
           {
             "element": "Pertinence pour 2 personnes",
-            "observation": "Page séparée pour 2-3 users = overkill. Candidat fusion avec Ma journée. [TAD] Pourquoi avoir une vue équipe quand on est 2?"
+            "observation": "Page séparée pour 2-3 users = overkill. Candidat fusion avec Ma journée. Pourquoi avoir une vue équipe quand on est 2?"
           },
           {
             "element": "Utilisation réelle",
             "observation": "Probablement jamais utilisé."
+          },
+          {
+            "element": "Mission par collab",
+            "observation": "Utile pour vous?"
+          },
+          {
+            "element": "PPA par collab",
+            "observation": "Encore un endroit où PPA ne devrait pas sortir?"
           }
         ]
       },
@@ -95,23 +83,23 @@
         "items": [
           {
             "element": "Vue inline DB_MAP_Notes",
-            "observation": "[TAD] Notes = un des trucs les plus utilisés."
+            "observation": "Notes = un des trucs les plus utilisés."
           },
           {
             "element": "Navigation / vues multiples",
-            "observation": "[TAD] La navigation semble pas bonne/pas adaptée. [TAD] Une liste et un tableau = extrêmement redondant. [TAD] Le kanban avec seulement 3 catégories finit par être une liste de fait. [TAD] La vue timeline pas adaptée pour récupérer de l'info rapidement."
+            "observation": "La navigation semble pas bonne/pas adaptée. Une liste et un tableau = extrêmement redondant. Le kanban avec seulement 3 catégories finit par être une liste de fait. La vue timeline pas adaptée pour récupérer de l'info rapidement."
           },
           {
             "element": "Statuts des notes — utilité",
-            "observation": "[TAD] Quel est le but des statuts de ces notes exactement? Système vérification peut créer friction si pas adopté par tous."
+            "observation": "Quel est le but des statuts de ces notes exactement? Système vérification peut créer friction si pas adopté par tous."
           },
           {
             "element": "Relations → Client / Mission / Tâche",
             "observation": "Vérifier que les relations sont remplies systématiquement."
           },
           {
-            "element": "Doublons / notes orphelines",
-            "observation": "Notes sans relation = données perdues. Vérifier si templates du consultant jamais utilisés."
+            "element": "À controller",
+            "observation": "Que recherchez-vous avec cette vue?"
           }
         ]
       },
@@ -120,23 +108,11 @@
         "items": [
           {
             "element": "Vue inline DB_MAP_Document",
-            "observation": "[TAD] Quel est le problème de cette DB? Trop lente à maintenir? La double entrée?"
-          },
-          {
-            "element": "Automation depuis Google Drive",
-            "observation": "[TAD] On pourrait créer une automation depuis le Drive où les docs sont mis. Les documents sont probablement tous sur le réseau interne / Excel."
+            "observation": "Quel est le problème de cette DB? Trop lente à maintenir? La double entrée?"
           },
           {
             "element": "Vue Vérification",
-            "observation": "[TAD] La vue Vérification peut être intéressante mais n'a actuellement PAS de filtres. [TAD] Idée: passer en vérification quand des propriétés n'ont pas pu être remplies par l'agent."
-          },
-          {
-            "element": "Formule alerte préavis contrat",
-            "observation": "Feature avancée pour gestion contrats immo. Utile SI fonctionnelle et comprise."
-          },
-          {
-            "element": "Formule Nb jours préavis",
-            "observation": "Tester avec des dates réelles. Si ça marche → argument pour garder Notion vs Excel."
+            "observation": "La vue Vérification peut être intéressante mais n'a actuellement PAS de filtres. Idée: passer en vérification quand des propriétés n'ont pas pu être remplies par l'agent."
           }
         ]
       }
@@ -150,15 +126,7 @@
         "items": [
           {
             "element": "Utilité quotidienne",
-            "observation": "[TAD] Inutile au quotidien. Personne se dit 'tiens quelles sont mes stats'. [TAD] Plus pertinent d'avoir un recap par mail/automation IA avec les mêmes stats."
-          },
-          {
-            "element": "Layout 3 colonnes",
-            "observation": "Sur un laptop standard ça risque d'être illisible. Tester sur écran réel du client."
-          },
-          {
-            "element": "Pattern callout bleu + titre vert",
-            "observation": "Beau design mais complexe à maintenir. Probablement overkill si on simplifie."
+            "observation": "Inutile au quotidien. Personne se dit 'tiens quelles sont mes stats'. Plus pertinent d'avoir un recap par mail/automation IA avec les mêmes stats."
           },
           {
             "element": "Vues inline (Mission/PPA/Tâches)",
@@ -171,7 +139,11 @@
         "items": [
           {
             "element": "Définition et utilité",
-            "observation": "[TAD] Qu'est-ce qu'une tâche transverse exactement? Demander la distinction. [TAD] Mission is empty and PPA is empty. Y a-t-il une vraie utilité? Risque élevé de confusion. Si même nous on doit demander → l'équipe ne l'utilise pas."
+            "observation": "Qu'est-ce qu'une tâche transverse exactement? Demander la distinction. Y a-t-il une vraie utilité? Risque élevé de confusion. Si même nous on doit demander → l'équipe ne l'utilise pas."
+          },
+          {
+            "element": "Règles de filtrage",
+            "observation": "Mission is empty and PPA is empty."
           }
         ]
       },
@@ -180,35 +152,15 @@
         "items": [
           {
             "element": "DB_MAP_Mission — schéma",
-            "observation": "[TAD] Mission paraît bien, mais l'utilisent-ils? Mission = chantier/projet? Vérifier alignement vocabulaire Notion vs métier."
-          },
-          {
-            "element": "Types de mission",
-            "observation": "Leur métier: gestion technique, sécurisation travaux, suivi chantier, audits. Les types correspondent?"
+            "observation": "Mission paraît bien, mais l'utilisent-ils? Mission = chantier/projet? Vérifier alignement vocabulaire Notion vs métier."
           },
           {
             "element": "Vues disponibles",
-            "observation": "[TAD] Une seule vue assez limitée / très différent des autres endroits où c'est complet en vues. [TAD] Doivent-ils parfois aller dans la base Mission faire des filtres manuels?"
-          },
-          {
-            "element": "Relation → Client",
-            "observation": "Chaque chantier a un client. Relation essentielle, doit être simple à remplir."
-          },
-          {
-            "element": "Relation → Tâche (1:N)",
-            "observation": "Cœur du besoin: chantier → liste de tâches. Doit être fluide."
-          },
-          {
-            "element": "Responsable (org)",
-            "observation": "Avec 2-3 personnes, un simple champ 'Personne' suffit. Si select avec entités = over-engineered."
+            "observation": "Une seule vue assez limitée / très différent des autres endroits où c'est complet en vues. Devez-vous parfois aller dans la base Mission faire des filtres manuels?"
           },
           {
             "element": "Statut / Avancement",
-            "observation": "[TAD] Avancement ET commentaire avancement = VIDES. Formule % basée sur sous-tâches. Si sous-tâches pas remplies → toujours 0%."
-          },
-          {
-            "element": "Qualité des données",
-            "observation": "Des vrais chantiers ou test data du consultant?"
+            "observation": "Avancement ET commentaire avancement = VIDES. Formule % basée sur sous-tâches. Si sous-tâches pas remplies → toujours 0%."
           }
         ]
       },
@@ -216,20 +168,16 @@
         "pageName": "PPA (Phasage)",
         "items": [
           {
-            "element": "Définition PPA",
-            "observation": "[TAD] PPA = Planning Prévisionnel d'Avancement ou Programme Prévisionnel d'Aménagement. [TAD] La page PPA crée automatiquement 4 phasages sur le même PPA."
-          },
-          {
             "element": "Filtres et groupements",
-            "observation": "[TAD] Les filtres paraissent mal faits. [TAD] Quelle est la différence entre PPA LPI et PPA Sefal OCDE? [TAD] Grouping par PPA mais pourquoi garder 'no PPA'?"
+            "observation": "Les filtres paraissent mal faits. Quelle est la différence entre PPA LPI et PPA Sefal OCDE? Grouping par PPA mais pourquoi garder 'no PPA'?"
           },
           {
-            "element": "Relations vers autres entités",
-            "observation": "Connecté à tout selon blueprint. Probablement sur-développé pour l'usage réel."
+            "element": "Données choisies",
+            "observation": "Les colonnes de la vue sont-elles pertinentes?"
           },
           {
             "element": "Utilisation réelle",
-            "observation": "Potentiellement sous-utilisé. Remplaçable par simple statut sur tâches?"
+            "observation": "Pertinent à garder ou il vaudrait mieux voir mission par mission?"
           }
         ]
       }
@@ -247,19 +195,11 @@
           },
           {
             "element": "Vue carte",
-            "observation": "[TAD] Utilité de la vue carte?"
+            "observation": "Utilité de la vue carte?"
           },
           {
             "element": "Groupement par Mission",
-            "observation": "[TAD] Enlever dans le grouping les prestataires sans Mission. [TAD] Le reste a l'air bien."
-          },
-          {
-            "element": "Relation → Tâche / Sous-tâche",
-            "observation": "Quel prestataire fait quoi sur quel chantier. Si vide → ils trackent de tête ou sur Excel."
-          },
-          {
-            "element": "Qualité des données",
-            "observation": "Doublons? Prestataires obsolètes? Même problème PPA: pas accès?"
+            "observation": "Enlever dans le grouping les prestataires sans Mission. Le reste a l'air bien."
           }
         ]
       },
@@ -267,16 +207,12 @@
         "pageName": "Pilotage contrat",
         "items": [
           {
-            "element": "DB_MAP_Gestion contrat — schéma",
-            "observation": "Seule propriété: 'Nom du contrat'. Très probablement sous-développé ou à supprimer."
-          },
-          {
             "element": "Doublon avec Documents",
-            "observation": "[TAD] Doublon avec Documents, mais la vue 'Préavis dépassé' est intéressante. [TAD] Qu'avez-vous le plus besoin de voir sur vos contrats?"
+            "observation": "Doublon avec Documents."
           },
           {
             "element": "Alertes et échéances",
-            "observation": "Besoin exprimé: rappels automatiques + deadlines. Alertes contrat pourraient y répondre."
+            "observation": "Besoin exprimé: rappels automatiques + deadlines. Alertes contrat pourraient y répondre. La vue 'Préavis dépassé' est intéressante. Qu'avez-vous le plus besoin de voir sur vos contrats?"
           }
         ]
       },
@@ -285,7 +221,7 @@
         "items": [
           {
             "element": "Contenu de la page",
-            "observation": "[TAD] VIDE!!! Quel était le but de cette page à l'origine? Si relations Prestataire↔Tâche vides, vue inutile par définition."
+            "observation": "La page semble peu renseignée. Si les relations Prestataire↔Tâche sont vides, la vue ne peut pas afficher grand chose. À vérifier avec vous."
           }
         ]
       }
@@ -299,19 +235,7 @@
         "items": [
           {
             "element": "DB_MAP_Client — schéma",
-            "observation": "Types: propriétaires, investisseurs, entreprises, clients travaux. [TAD] Basique, simple, efficace. [TAD] DB Client = top."
-          },
-          {
-            "element": "Relation → Contact (1:N)",
-            "observation": "Client peut avoir plusieurs contacts (proprio + gardien + syndic). Pertinent."
-          },
-          {
-            "element": "Relation → Mission (1:N)",
-            "observation": "Client → Chantier(s). Essentiel. Vérifier bien rempli."
-          },
-          {
-            "element": "Qualité des données",
-            "observation": "MAP IMMO créée mai 2024, portfolio petit. DB quasi vide = normal."
+            "observation": "Types: propriétaires, investisseurs, entreprises, clients travaux. Basique, simple, efficace. DB Client = top."
           }
         ]
       },
@@ -320,15 +244,11 @@
         "items": [
           {
             "element": "DB_MAP_Contact — schéma",
-            "observation": "Contacts = interlocuteurs chantier (maître d'ouvrage, architecte, bureaux d'études). [TAD] Bien remplie MAIS propriétés vides: PPA (pas accès?), company linkedin, education, skills, url linkedin."
+            "observation": "Contacts = interlocuteurs chantier (maître d'ouvrage, architecte, bureaux d'études). Bien remplie MAIS propriétés vides: PPA (pas accès?), company linkedin, education, skills, url linkedin."
           },
           {
             "element": "Groupe 'no mission'",
-            "observation": "[TAD] Encore un groupe 'no mission' dans la vue contrat prestataire."
-          },
-          {
-            "element": "Coordonnées — complétude",
-            "observation": "Email + téléphone minimum. Si vides → contacts gérés ailleurs."
+            "observation": "Encore un groupe 'no mission' dans la vue contrat prestataire."
           }
         ]
       },
@@ -337,11 +257,7 @@
         "items": [
           {
             "element": "DB_MAP_Occupant",
-            "observation": "[TAD] DOUBLON PUR. Même icône que Prestataire (factory_gray) — confusion. [TAD] À moitié liée: pas contact mais oui Mission. Fonction et place = vides."
-          },
-          {
-            "element": "Différence Occupant vs Contact",
-            "observation": "Distinction pas évidente. Demander logique métier au client. Fort candidat suppression ou fusion avec Contact."
+            "observation": "Même icône que Prestataire — risque de confusion visuelle. Base à moitié liée et champs peu renseignés. À clarifier avec vous lors de l'audit."
           }
         ]
       },
@@ -350,7 +266,7 @@
         "items": [
           {
             "element": "Contenu et pertinence",
-            "observation": "[TAD] Très peu de missions → est-ce pertinent? [TAD] Le filtre par avancement fait que c'est VIDE. [TAD] Que voulez-vous voir dans cette vue?"
+            "observation": "Très peu de missions → est-ce pertinent? Le filtre par avancement fait que c'est VIDE. Que voulez-vous voir dans cette vue?"
           }
         ]
       }
@@ -364,31 +280,11 @@
         "items": [
           {
             "element": "Organisation des 12 databases",
-            "observation": "12 DBs pour 2 personnes qui n'utilisent pas Notion. Probablement 5-6 max nécessaires: Client, Mission, Tâche, Prestataire, Contact, Document."
+            "observation": "2 bases sont complètement vides: DB_MAP_WIDGET et DB_MAP_GESTION_CONTRAT."
           },
           {
             "element": "Séparation view pages vs DB pages",
             "observation": "Pattern bien conçu par le consultant. Garder même si on simplifie = bonne archi."
-          },
-          {
-            "element": "Relations inter-DB — cohérence",
-            "observation": "Everything-connects-to-everything = puissant mais complexe. Prioriser 3-4 relations utiles."
-          },
-          {
-            "element": "Formules (%, timing, alertes)",
-            "observation": "Tester chaque formule. Si marchent → valeur gratuite. Si cassées → réparer ou supprimer."
-          },
-          {
-            "element": "Données orphelines",
-            "observation": "Entries fantômes du consultant probable dans un workspace peu utilisé."
-          },
-          {
-            "element": "Propriétés inutilisées",
-            "observation": "Colonnes jamais remplies = confusion. Approche TRAX: supprimer, on rajoutera plus tard."
-          },
-          {
-            "element": "Réunion Notion octobre (historique)",
-            "observation": "[TAD] Vérifier le compte-rendu de la réunion Notion d'octobre pour comprendre ce qui a été discuté."
           }
         ]
       },
@@ -401,15 +297,11 @@
           },
           {
             "element": "Ergonomie tâche vs sous-tâche",
-            "observation": "[TAD] Comment sont-elles créées? Ont-elles les mêmes propriétés? Si oui → penser sub-items."
+            "observation": "Comment sont-elles créées? Ont-elles les mêmes propriétés? Si oui → penser sub-items."
           },
           {
             "element": "Statuts (A faire/En cours/Blocage/Terminé)",
-            "observation": "Correspondent à leur façon de travailler? Vérifier termes dans leur Excel."
-          },
-          {
-            "element": "Relations (Mission, Client, Contact, Prestataire)",
-            "observation": "4 relations par tâche = beaucoup. Identifier 1-2 essentielles vs nice-to-have."
+            "observation": "Correspondent à votre façon de travailler? Vérifier termes dans votre Excel."
           },
           {
             "element": "Formule % Avancement",
@@ -439,11 +331,11 @@
         "items": [
           {
             "element": "Propriété PPA",
-            "observation": "[TAD] Même problème que Contact: PPA probablement pas accessible."
+            "observation": "Même problème que Contact: PPA probablement pas accessible."
           },
           {
             "element": "Adresse / vue carte",
-            "observation": "[TAD] Si on supprime la vue carte, est-ce qu'on supprime adresse qui est à peine remplie?"
+            "observation": "Si on supprime la vue carte, est-ce qu'on supprime adresse qui est à peine remplie?"
           }
         ]
       },
@@ -452,11 +344,11 @@
         "items": [
           {
             "element": "Relations",
-            "observation": "[TAD] À moitié liée: pas contact mais oui Mission."
+            "observation": "À moitié liée: pas contact mais oui Mission."
           },
           {
             "element": "Champs vides",
-            "observation": "[TAD] Fonction et place = vides."
+            "observation": "Fonction et place = vides."
           }
         ]
       },
@@ -465,16 +357,24 @@
         "items": [
           {
             "element": "Avancement",
-            "observation": "[TAD] Avancement et commentaire avancement = VIDES."
+            "observation": "Avancement et commentaire avancement = VIDES."
           }
         ]
       },
       {
-        "pageName": "DB_MAP_Widget",
+        "pageName": "Archi & Vue — Philosophie",
         "items": [
           {
-            "element": "Utilité réelle",
-            "observation": "Calendrier home page = DB vide. Widget = une propriété. Candidat n°1 suppression. [TAD] Le calendrier sur la home page est une base de données vide."
+            "element": "Préférence utilisateur: vues",
+            "observation": "Préférez-vous peu de vues complètes ou plein de petites vues précises? (possible avec nouvelles bases Notion)."
+          },
+          {
+            "element": "Où sont la to-do et les Excels?",
+            "observation": "L'équipe travaille sur Excel pour: tâches, responsables, statut, commentaires post-réunion chantier. Où est la to-do et les Excels? Gestion actuelle = fichiers Excel sur réseau interne."
+          },
+          {
+            "element": "Automation depuis Google Drive",
+            "observation": "On pourrait créer une automation depuis le Drive où les docs sont mis. Les documents sont probablement tous sur le réseau interne / Excel."
           }
         ]
       }

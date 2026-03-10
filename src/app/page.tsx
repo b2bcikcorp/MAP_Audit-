@@ -15,33 +15,32 @@ export default function Home() {
   const { resetAll } = useAudit();
 
   return (
-    <main className="min-h-screen flex flex-col max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <main className="min-h-screen flex flex-col max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8">
       
       {/* Header & Tabs */}
-      <header className="flex flex-col md:flex-row items-center justify-between gap-6 mb-12 border-b border-white/10 pb-6 sticky top-0 bg-[#0f0f0f]/80 backdrop-blur-md z-50">
-        <div>
-          <h1 className="text-2xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
+      <header className="glass-nav rounded-2xl flex flex-col items-center gap-4 mb-10 p-4 md:p-5 sticky top-4 z-50">
+        <div className="text-center">
+          <h1 className="text-2xl font-extrabold text-gradient">
             TRAX AI x MAPIG
           </h1>
-          <p className="text-sm text-white/50">Restructuration Notion — Audit Interactif</p>
+          <p className="text-sm text-slate-600">Restructuration Notion - Audit Interactif</p>
         </div>
 
-        <nav className="flex items-center gap-2 bg-white/5 p-1.5 rounded-xl border border-white/10">
-          <TabButton active={activeTab === 'context'} onClick={() => setActiveTab('context')}>
-            1. Contexte & ROI
-          </TabButton>
-          <TabButton active={activeTab === 'audit'} onClick={() => setActiveTab('audit')}>
-            2. Grille d'Audit
-          </TabButton>
-          <TabButton active={activeTab === 'architecture'} onClick={() => setActiveTab('architecture')}>
-            3. Architecture
-          </TabButton>
-        </nav>
-
-        <div className="flex items-center gap-4">
+        <div className="flex items-center justify-center gap-6 w-full">
+          <nav className="flex items-center gap-1.5 bg-white/60 p-1.5 rounded-xl surface-border shadow-sm">
+            <TabButton active={activeTab === 'context'} onClick={() => setActiveTab('context')}>
+              1. Contexte & ROI
+            </TabButton>
+            <TabButton active={activeTab === 'audit'} onClick={() => setActiveTab('audit')}>
+              2. Grille d&apos;Audit
+            </TabButton>
+            <TabButton active={activeTab === 'architecture'} onClick={() => setActiveTab('architecture')}>
+              3. Architecture
+            </TabButton>
+          </nav>
           <button 
             onClick={resetAll}
-            className="text-xs font-semibold text-white/30 hover:text-red-400 transition-colors"
+            className="text-xs font-semibold text-slate-500 hover:text-rose-500 transition-colors shrink-0"
           >
             Reset Data
           </button>
@@ -78,14 +77,14 @@ function TabButton({ active, onClick, children }: { active: boolean, onClick: ()
   return (
     <button
       onClick={onClick}
-      className={`px-4 py-2 rounded-lg text-sm font-medium transition-all relative ${
-        active ? 'text-white' : 'text-white/50 hover:text-white/80 hover:bg-white/5'
+      className={`px-3.5 md:px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all relative ${
+        active ? 'text-slate-900' : 'text-slate-500 hover:text-slate-800 hover:bg-white/70'
       }`}
     >
       {active && (
         <motion.div
           layoutId="active-tab"
-          className="absolute inset-0 bg-indigo-500/20 border border-indigo-500/30 rounded-lg"
+          className="absolute inset-0 bg-white/95 border border-indigo-200 rounded-lg shadow-sm"
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
         />
       )}

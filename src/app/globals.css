@@ -1,18 +1,135 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0f0f0f;
-  --foreground: #ededed;
+  --dream-purple: #8b5cf6;
+  --dream-peach: #f43f5e;
+  --dream-blue: #3b82f6;
+  --dream-cream: #f8fafc;
+  --dream-ink: #1e293b;
+  --dream-ink-light: #475569;
+  --dream-border: rgba(30, 41, 59, 0.12);
+  --dream-card: rgba(255, 255, 255, 0.72);
+  --dream-card-hover: rgba(255, 255, 255, 0.84);
+  --dream-nav: rgba(255, 255, 255, 0.8);
+  --dream-shadow: 0 8px 30px rgba(15, 23, 42, 0.08);
+  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: var(--dream-cream);
+  --color-foreground: var(--dream-ink);
+  --font-sans: var(--font-urbanist);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  color: var(--dream-ink);
+  background-color: #f0ece6;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.22)),
+    radial-gradient(circle at 10% 15%, rgba(253, 230, 138, 0.4) 0%, transparent 52%),
+    radial-gradient(circle at 8% 85%, rgba(253, 186, 116, 0.32) 0%, transparent 55%),
+    radial-gradient(circle at 92% 18%, rgba(165, 180, 252, 0.32) 0%, transparent 52%),
+    radial-gradient(circle at 82% 78%, rgba(192, 132, 252, 0.22) 0%, transparent 56%),
+    linear-gradient(120deg, #fdfbf7 0%, #f5f3ff 100%);
+  font-family: var(--font-urbanist), "Urbanist", system-ui, -apple-system, "Segoe UI", sans-serif;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #1e1b4b;
+  letter-spacing: -0.02em;
+}
+
+.glass-nav {
+  background: var(--dream-nav);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  box-shadow: var(--dream-shadow);
+}
+
+.glass-card {
+  background: var(--dream-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.76);
+  box-shadow:
+    0 2px 8px rgba(30, 41, 59, 0.04),
+    0 16px 34px rgba(30, 41, 59, 0.08),
+    inset 0 0 16px rgba(255, 255, 255, 0.45);
+  transition: all 0.35s var(--ease-out-expo);
+}
+
+.glass-card:hover {
+  background: var(--dream-card-hover);
+  transform: translateY(-2px);
+}
+
+.surface-border {
+  border: 1px solid var(--dream-border);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #1e1b4b 0%, #4f46e5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.btn-primary {
+  background: #1e293b;
+  color: #fff;
+  border-radius: 999px;
+  font-weight: 600;
+  transition: all 0.28s var(--ease-out-expo);
+  box-shadow: 0 6px 18px rgba(30, 41, 59, 0.2);
+}
+
+.btn-primary:hover {
+  background: #0f172a;
+  transform: translateY(-1px);
+}
+
+.soft-input {
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(30, 41, 59, 0.14);
+  color: var(--dream-ink);
+}
+
+.soft-input:focus {
+  outline: none;
+  border-color: rgba(99, 102, 241, 0.65);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.16);
+}
+
+@media (hover: none) {
+  .glass-card:hover {
+    transform: none;
+  }
+
+  .btn-primary:hover {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

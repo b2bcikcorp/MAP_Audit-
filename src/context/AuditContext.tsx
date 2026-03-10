@@ -2,7 +2,7 @@
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
-export type Status = '✅' | '⚠️' | '❌' | '🔨' | '🔧' | null;
+export type Status = '✅' | '⚠️' | '❌' | null;
 
 export interface ItemState {
   status: Status;
@@ -21,26 +21,21 @@ interface AuditContextType {
 const AuditContext = createContext<AuditContextType | undefined>(undefined);
 
 export function AuditProvider({ children }: { children: React.ReactNode }) {
-  const [state, setState] = useState<AuditState>({});
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {
+  const [state, setState] = useState<AuditState>(() => {
+    if (typeof window === 'undefined') return {};
     const saved = localStorage.getItem('mapig-audit-state');
-    if (saved) {
-      try {
-        setState(JSON.parse(saved));
-      } catch (e) {
-        console.error('Failed to parse saved state', e);
-      }
+    if (!saved) return {};
+    try {
+      return JSON.parse(saved);
+    } catch (e) {
+      console.error('Failed to parse saved state', e);
+      return {};
     }
-    setIsLoaded(true);
-  }, []);
+  });
 
   useEffect(() => {
-    if (isLoaded) {
-      localStorage.setItem('mapig-audit-state', JSON.stringify(state));
-    }
-  }, [state, isLoaded]);
+    localStorage.setItem('mapig-audit-state', JSON.stringify(state));
+  }, [state]);
 
   const updateStatus = (id: string, status: Status) => {
     setState(prev => ({
@@ -62,9 +57,6 @@ export function AuditProvider({ children }: { children: React.ReactNode }) {
       localStorage.removeItem('mapig-audit-state');
     }
   };
-
-  // Prevent hydration mismatch
-  if (!isLoaded) return null;
 
   return (
     <AuditContext.Provider value={{ state, updateStatus, updateNotes, resetAll }}>
