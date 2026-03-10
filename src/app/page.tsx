@@ -8,6 +8,7 @@ import { Dashboard } from '@/components/Dashboard';
 import { AuditGrid } from '@/components/AuditGrid';
 import { ArchitectureExplorer } from '@/components/ArchitectureExplorer';
 import { MeetingNotes } from '@/components/MeetingNotes';
+import { CodeGate } from '@/components/CodeGate';
 import { useAudit } from '@/context/AuditContext';
 import auditData from '@/data/audit-data.json';
 
@@ -35,6 +36,7 @@ export default function Home() {
   const { evaluated, total, pct } = useProgress();
 
   return (
+    <CodeGate>
     <main className="min-h-screen flex flex-col max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
 
       <header className="mb-10 sticky top-0 z-50 backdrop-blur-md bg-white/40 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8">
@@ -107,6 +109,7 @@ export default function Home() {
       </div>
 
     </main>
+    </CodeGate>
   );
 }
 
