@@ -7,12 +7,71 @@ import { Dashboard } from '@/components/Dashboard';
 import { AuditGrid } from '@/components/AuditGrid';
 import { ArchitectureExplorer } from '@/components/ArchitectureExplorer';
 import { useAudit } from '@/context/AuditContext';
+import { Lock } from 'lucide-react';
+
+const SITE_PASSWORD = 'TRAX_MAPIG_2026';
 
 type Tab = 'context' | 'audit' | 'architecture';
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState<Tab>('context');
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [passwordInput, setPasswordInput] = useState('');
+  const [error, setError] = useState(false);
   const { resetAll } = useAudit();
+
+  function handlePasswordSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (passwordInput === SITE_PASSWORD) {
+      setIsAuthenticated(true);
+      setError(false);
+    } else {
+      setError(true);
+      setPasswordInput('');
+    }
+  }
+
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-screen flex items-center justify-center px-4">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.35, ease: [0.19, 1, 0.22, 1] }}
+          className="glass-card rounded-2xl p-8 md:p-10 w-full max-w-sm text-center"
+        >
+          <div className="mx-auto mb-5 w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center">
+            <Lock className="w-5 h-5 text-indigo-600" />
+          </div>
+          <h1 className="text-xl font-bold text-gradient mb-1">TRAX AI x MAPIG</h1>
+          <p className="text-sm text-slate-500 mb-6">Accès protégé — entrez le mot de passe</p>
+
+          <form onSubmit={handlePasswordSubmit} className="space-y-4">
+            <input
+              type="password"
+              value={passwordInput}
+              onChange={(e) => { setPasswordInput(e.target.value); setError(false); }}
+              placeholder="Mot de passe"
+              autoFocus
+              className="w-full px-4 py-2.5 rounded-xl soft-input text-sm text-center tracking-wider"
+            />
+            {error && (
+              <motion.p
+                initial={{ opacity: 0, y: -4 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-xs text-rose-500 font-medium"
+              >
+                Mot de passe incorrect
+              </motion.p>
+            )}
+            <button type="submit" className="btn-primary w-full py-2.5 text-sm">
+              Accéder à l&apos;audit
+            </button>
+          </form>
+        </motion.div>
+      </div>
+    );
+  }
 
   return (
     <main className="min-h-screen flex flex-col max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8">
