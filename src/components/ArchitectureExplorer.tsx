@@ -142,9 +142,9 @@ function InteractiveGraph({ nodes, edges, positions, width, height, subtitle, he
   }, [activeId, nodes]);
 
   return (
-    <div className="glass-card rounded-2xl overflow-hidden relative">
+    <div className="rounded-2xl overflow-hidden relative bg-slate-50/70 border border-slate-200/60" style={{ boxShadow: '0 2px 12px rgba(15,23,42,0.04)' }}>
       {subtitle && (
-        <div className="absolute top-3 left-4 text-[10px] uppercase tracking-widest text-slate-500 font-semibold select-none">{subtitle}</div>
+        <div className="absolute top-3 left-4 eyebrow select-none">{subtitle}</div>
       )}
       <svg viewBox={`0 0 ${width} ${height}`} className="w-full h-auto" style={{ maxHeight: '75vh' }}>
         {edges.map((edge, i) => {
@@ -242,9 +242,9 @@ function InteractiveGraph({ nodes, edges, positions, width, height, subtitle, he
       <AnimatePresence>
         {activeNode && (
           <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }}
-            className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-md border border-slate-200 rounded-xl p-4 flex items-start gap-4"
+            className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-lg border border-slate-200/80 rounded-xl p-4 flex items-start gap-4 shadow-xl"
           >
-            <div className="w-12 h-12 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-2xl shrink-0">{activeNode.icon}</div>
+            <div className="w-14 h-14 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-2xl shrink-0">{activeNode.icon}</div>
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-3 flex-wrap">
                 <h4 className="text-lg font-bold text-slate-900">{activeNode.name}</h4>
@@ -284,7 +284,7 @@ function InteractiveGraph({ nodes, edges, positions, width, height, subtitle, he
 
       {/* Health legend */}
       {healthMap && Object.values(healthMap).some(v => v !== null) && (
-        <div className="absolute top-3 right-4 flex items-center gap-3 text-[10px] text-slate-500 font-semibold select-none">
+        <div className="absolute top-2.5 right-3 flex items-center gap-3 text-[10px] text-slate-500 font-semibold select-none bg-white/70 backdrop-blur-sm rounded-lg px-3 py-1.5 border border-slate-200/40">
           <span className="flex items-center gap-1"><span className="inline-block w-2.5 h-2.5 rounded-full" style={{ background: 'rgba(16,185,129,0.7)' }} />Bon</span>
           <span className="flex items-center gap-1"><span className="inline-block w-2.5 h-2.5 rounded-full" style={{ background: 'rgba(245,158,11,0.7)' }} />Moyen</span>
           <span className="flex items-center gap-1"><span className="inline-block w-2.5 h-2.5 rounded-full" style={{ background: 'rgba(225,29,72,0.7)' }} />Critique</span>
@@ -364,7 +364,7 @@ const pageNodes: GraphNode[] = [
     id: 'ma-journee', icon: '📅', name: 'Ma journée',
     relations: ['home', 'vue-equipes', 'tache-transverse', 'mission'],
     color: BLUE, tag: 'QUOTIDIEN', tagType: 'pillar',
-    desc: "Dashboard perso — mes tâches du jour. Bouton ajout rapide → tâche transverse. Tâches liées à missions.",
+    desc: "Dashboard perso, mes tâches du jour. Bouton ajout rapide → tâche transverse. Tâches liées à missions.",
     auditPages: ['Ma journée'],
   },
   {
@@ -436,7 +436,7 @@ const pageNodes: GraphNode[] = [
     id: 'travaux-presta', icon: '🔧', name: 'Travaux/presta',
     relations: ['prestataire', 'mission'],
     color: RED, tag: 'PRESTATAIRES', tagType: 'pillar',
-    desc: "Tâches filtrées par prestataire. PAGE VIDE — relations Prestataire↔Tâche non remplies.",
+    desc: "Tâches filtrées par prestataire. PAGE VIDE, relations Prestataire↔Tâche non remplies.",
     auditPages: ['Travaux par prestataire'],
   },
   // Purple — Client & Contact
@@ -458,14 +458,14 @@ const pageNodes: GraphNode[] = [
     id: 'occupant', icon: '🏢', name: 'Occupant',
     relations: ['contact', 'mission'],
     color: PURPLE, tag: 'CLIENT', tagType: 'pillar',
-    desc: "Locataires des sites. Doublon pur — candidat fusion avec Contact. Lié à Mission.",
+    desc: "Locataires des sites. Doublon pur, candidat fusion avec Contact. Lié à Mission.",
     auditPages: ['Occupant'],
   },
   {
     id: 'travaux-client', icon: '🔨', name: 'Travaux/client',
     relations: ['client', 'mission'],
     color: PURPLE, tag: 'CLIENT', tagType: 'pillar',
-    desc: "Tâches filtrées par client. Quasi VIDE — filtre avancement trop restrictif.",
+    desc: "Tâches filtrées par client. Quasi VIDE, filtre avancement trop restrictif.",
     auditPages: ['Travaux par client'],
   },
   // Hidden admin
@@ -502,69 +502,77 @@ export function ArchitectureExplorer() {
     <div className="space-y-16">
       {/* SECTION 1: Database Relations */}
       <section className="space-y-6">
-        <div className="glass-card rounded-2xl p-6">
-          <h3 className="text-xl font-semibold mb-2">1. Architecture Relationnelle — Les 12 Bases</h3>
-          <p className="text-slate-600 text-sm">
+        <div>
+          <div className="flex items-center gap-3 mb-3">
+            <div className="w-8 h-8 rounded-full bg-indigo-600 text-white flex items-center justify-center text-sm font-bold shrink-0">1</div>
+            <h3 className="text-lg font-bold text-slate-900">Architecture Relationnelle, Les 12 Bases</h3>
+          </div>
+          <p className="text-sm text-slate-600 ml-11">
             Survolez une base pour voir ses connexions directes. Plus il y a de lignes, plus c&apos;est complexe.
-            {hasAnyDbHealth && <span className="ml-2 text-indigo-700 font-semibold">Les couleurs reflètent vos évaluations de la grille d&apos;audit.</span>}
+            {hasAnyDbHealth && <span className="ml-2 text-indigo-700 font-semibold">Les couleurs reflètent vos évaluations.</span>}
           </p>
-          <div className="flex gap-6 mt-4 text-sm text-slate-600">
-            <span>12 bases de données</span>
-            <span className="text-indigo-700 font-semibold">{dbEdges.length} connexions uniques</span>
-            <span className="text-rose-700 font-semibold">~{totalRelFields} champs de relation</span>
+          <div className="flex gap-6 mt-3 ml-11 text-sm text-slate-500">
+            <span>12 bases</span>
+            <span className="text-indigo-600 font-semibold">{dbEdges.length} connexions</span>
+            <span className="text-rose-600 font-semibold">~{totalRelFields} champs relation</span>
           </div>
         </div>
 
         <InteractiveGraph nodes={dbNodes} edges={dbEdges} positions={dbPositions} width={W} height={H} subtitle="BASES DE DONNÉES" healthMap={dbHealthMap} />
 
-        <div className="grid grid-cols-3 gap-4">
-          <div className="glass-card rounded-xl p-4 text-center">
-            <div className="text-3xl font-bold text-rose-700">~60</div>
-            <div className="text-xs text-slate-600 mt-1">Champs de relation au total</div>
+        <div className="flex gap-8 ml-11">
+          <div>
+            <div className="text-2xl font-bold text-rose-700">~60</div>
+            <div className="text-xs text-slate-500 mt-0.5">Champs de relation</div>
           </div>
-          <div className="glass-card rounded-xl p-4 text-center">
-            <div className="text-3xl font-bold text-amber-700">12</div>
-            <div className="text-xs text-slate-600 mt-1">Bases pour 2 personnes</div>
+          <div>
+            <div className="text-2xl font-bold text-amber-700">12</div>
+            <div className="text-xs text-slate-500 mt-0.5">Bases pour 2 personnes</div>
           </div>
-          <div className="glass-card rounded-xl p-4 text-center">
-            <div className="text-3xl font-bold text-indigo-700">{dbEdges.length}</div>
-            <div className="text-xs text-slate-600 mt-1">Connexions inter-bases</div>
+          <div>
+            <div className="text-2xl font-bold text-indigo-700">{dbEdges.length}</div>
+            <div className="text-xs text-slate-500 mt-0.5">Connexions inter-bases</div>
           </div>
         </div>
       </section>
 
+      {/* Section divider */}
+      <div className="border-t border-slate-200/50" />
+
       {/* SECTION 2: Navigation Pages */}
       <section className="space-y-6">
-        <div className="glass-card rounded-2xl p-6">
-          <h3 className="text-xl font-semibold mb-2">2. Navigation — Les 16 Pages de Vue</h3>
-          <p className="text-slate-600 text-sm">
-            Connexions basées sur la <strong>navigation contenu réelle</strong> de chaque page (relations inline, drill-down, boutons).
-            La synced nav bar universelle est volontairement exclue pour révéler la topologie intentionnelle.
+        <div>
+          <div className="flex items-center gap-3 mb-3">
+            <div className="w-8 h-8 rounded-full bg-indigo-600 text-white flex items-center justify-center text-sm font-bold shrink-0">2</div>
+            <h3 className="text-lg font-bold text-slate-900">Navigation, Les 16 Pages de Vue</h3>
+          </div>
+          <p className="text-sm text-slate-600 ml-11">
+            Connexions basées sur la <strong>navigation contenu réelle</strong> de chaque page.
+            La synced nav bar est exclue pour révéler la topologie intentionnelle.
             {hasAnyPageHealth && <span className="ml-2 text-indigo-700 font-semibold">Couleur = santé d&apos;après votre grille.</span>}
           </p>
-          <div className="flex gap-6 mt-4 text-sm text-slate-600 flex-wrap">
-            <span><span className="inline-block w-2 h-2 rounded-full mr-1.5" style={{ background: BLUE }} />4 pages Quotidien</span>
-            <span><span className="inline-block w-2 h-2 rounded-full mr-1.5" style={{ background: GREEN }} />4 pages Travaux</span>
-            <span><span className="inline-block w-2 h-2 rounded-full mr-1.5" style={{ background: RED }} />3 pages Prestataires</span>
-            <span><span className="inline-block w-2 h-2 rounded-full mr-1.5" style={{ background: PURPLE }} />4 pages Client</span>
-            <span className="text-slate-500">+ Home + Admin</span>
+          <div className="flex gap-5 mt-3 ml-11 text-sm text-slate-500 flex-wrap">
+            <span><span className="inline-block w-2 h-2 rounded-full mr-1.5" style={{ background: BLUE }} />Quotidien</span>
+            <span><span className="inline-block w-2 h-2 rounded-full mr-1.5" style={{ background: GREEN }} />Travaux</span>
+            <span><span className="inline-block w-2 h-2 rounded-full mr-1.5" style={{ background: RED }} />Prestataires</span>
+            <span><span className="inline-block w-2 h-2 rounded-full mr-1.5" style={{ background: PURPLE }} />Client</span>
           </div>
         </div>
 
         <InteractiveGraph nodes={pageNodes} edges={pageEdges} positions={pagePositions} width={W} height={H} subtitle="PAGES DE VUE" healthMap={pageHealthMap} />
 
-        <div className="grid grid-cols-3 gap-4">
-          <div className="glass-card rounded-xl p-4 text-center">
-            <div className="text-3xl font-bold text-rose-700">{pageEdges.length}</div>
-            <div className="text-xs text-slate-600 mt-1">Liens de navigation croisés</div>
+        <div className="flex gap-8 ml-11">
+          <div>
+            <div className="text-2xl font-bold text-rose-700">{pageEdges.length}</div>
+            <div className="text-xs text-slate-500 mt-0.5">Liens de navigation croisés</div>
           </div>
-          <div className="glass-card rounded-xl p-4 text-center">
-            <div className="text-3xl font-bold text-amber-700">16</div>
-            <div className="text-xs text-slate-600 mt-1">Pages visibles pour 2 personnes</div>
+          <div>
+            <div className="text-2xl font-bold text-amber-700">16</div>
+            <div className="text-xs text-slate-500 mt-0.5">Pages pour 2 personnes</div>
           </div>
-          <div className="glass-card rounded-xl p-4 text-center">
-            <div className="text-3xl font-bold text-indigo-700">13+</div>
-            <div className="text-xs text-slate-600 mt-1">Cibles de nav (synced bar)</div>
+          <div>
+            <div className="text-2xl font-bold text-indigo-700">13+</div>
+            <div className="text-xs text-slate-500 mt-0.5">Cibles nav (synced bar)</div>
           </div>
         </div>
       </section>

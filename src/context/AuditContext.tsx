@@ -1,6 +1,6 @@
 'use client'
 
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useCallback, useEffect, useState } from 'react';
 
 export type Status = '✅' | '⚠️' | '❌' | null;
 
@@ -18,45 +18,47 @@ interface AuditContextType {
   resetAll: () => void;
 }
 
+const STORAGE_KEY = 'mapig-audit-state';
 const AuditContext = createContext<AuditContextType | undefined>(undefined);
 
 export function AuditProvider({ children }: { children: React.ReactNode }) {
-  const [state, setState] = useState<AuditState>(() => {
-    if (typeof window === 'undefined') return {};
-    const saved = localStorage.getItem('mapig-audit-state');
-    if (!saved) return {};
-    try {
-      return JSON.parse(saved);
-    } catch (e) {
-      console.error('Failed to parse saved state', e);
-      return {};
-    }
-  });
+  const [state, setState] = useState<AuditState>({});
+  const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
-    localStorage.setItem('mapig-audit-state', JSON.stringify(state));
-  }, [state]);
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) setState(JSON.parse(saved));
+    } catch { /* ignore corrupt data */ }
+    setHydrated(true);
+  }, []);
 
-  const updateStatus = (id: string, status: Status) => {
+  useEffect(() => {
+    if (hydrated) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    }
+  }, [state, hydrated]);
+
+  const updateStatus = useCallback((id: string, status: Status) => {
     setState(prev => ({
       ...prev,
       [id]: { status, notes: prev[id]?.notes || '' }
     }));
-  };
+  }, []);
 
-  const updateNotes = (id: string, notes: string) => {
+  const updateNotes = useCallback((id: string, notes: string) => {
     setState(prev => ({
       ...prev,
       [id]: { status: prev[id]?.status || null, notes }
     }));
-  };
+  }, []);
 
-  const resetAll = () => {
-    if (window.confirm("Are you sure you want to reset all data?")) {
+  const resetAll = useCallback(() => {
+    if (window.confirm('Voulez-vous vraiment réinitialiser toutes les données ?')) {
       setState({});
-      localStorage.removeItem('mapig-audit-state');
+      localStorage.removeItem(STORAGE_KEY);
     }
-  };
+  }, []);
 
   return (
     <AuditContext.Provider value={{ state, updateStatus, updateNotes, resetAll }}>

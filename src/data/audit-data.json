@@ -10,19 +10,19 @@
             "observation": "Hub-and-spoke = bon pattern mais potentiellement trop complexe pour 2 personnes. Des endroits sont complètement utilisés, d'autres pas du tout."
           },
           {
-            "element": "Synced nav bar — fonctionnement",
+            "element": "Synced nav bar, fonctionnement",
             "observation": "Pattern intelligent MAIS avec 2 users qui n'utilisent pas Notion."
           },
           {
             "element": "Système 4 couleurs / 4 piliers",
-            "observation": "4 piliers pour 2 personnes — peut-être fusionner en 2-3 max. Philosophie: diminuer le noise, less is more."
+            "observation": "4 piliers pour 2 personnes, peut-être fusionner en 2-3 max. Philosophie: diminuer le noise, less is more."
           },
           {
             "element": "Calendrier / Widget home page",
             "observation": "Le calendrier sur la home page est une base de données VIDE DB_MAP_Widget = une seule propriété 'Nom' → probablement jamais configuré."
           },
           {
-            "element": "Icônes gray set — cohérence",
+            "element": "Icônes gray set, cohérence",
             "observation": "Beau travail de design du consultant d'origine. Vérifier que rien n'a été cassé."
           }
         ]
@@ -40,7 +40,7 @@
             "observation": "CLEF pour l'adoption. Si pas simple → retour sur Excel."
           },
           {
-            "element": "Vue Tâche — filtre 'mes tâches'",
+            "element": "Vue Tâche, filtre 'mes tâches'",
             "observation": "Si les tâches n'ont pas de responsable assigné → vue vide → zéro valeur."
           },
           {
@@ -90,7 +90,7 @@
             "observation": "La navigation semble pas bonne/pas adaptée. Une liste et un tableau = extrêmement redondant. Le kanban avec seulement 3 catégories finit par être une liste de fait. La vue timeline pas adaptée pour récupérer de l'info rapidement."
           },
           {
-            "element": "Statuts des notes — utilité",
+            "element": "Statuts des notes, utilité",
             "observation": "Quel est le but des statuts de ces notes exactement? Système vérification peut créer friction si pas adopté par tous."
           },
           {
@@ -151,7 +151,7 @@
         "pageName": "Mission",
         "items": [
           {
-            "element": "DB_MAP_Mission — schéma",
+            "element": "DB_MAP_Mission, schéma",
             "observation": "Mission paraît bien, mais l'utilisent-ils? Mission = chantier/projet? Vérifier alignement vocabulaire Notion vs métier."
           },
           {
@@ -190,7 +190,7 @@
         "pageName": "Prestataire",
         "items": [
           {
-            "element": "DB_MAP_Prestataire — schéma",
+            "element": "DB_MAP_Prestataire, schéma",
             "observation": "Central pour AMO. Vérifier: métier, contact, dispo, évaluation qualité."
           },
           {
@@ -234,7 +234,7 @@
         "pageName": "Client",
         "items": [
           {
-            "element": "DB_MAP_Client — schéma",
+            "element": "DB_MAP_Client, schéma",
             "observation": "Types: propriétaires, investisseurs, entreprises, clients travaux. Basique, simple, efficace. DB Client = top."
           }
         ]
@@ -243,7 +243,7 @@
         "pageName": "Contact",
         "items": [
           {
-            "element": "DB_MAP_Contact — schéma",
+            "element": "DB_MAP_Contact, schéma",
             "observation": "Contacts = interlocuteurs chantier (maître d'ouvrage, architecte, bureaux d'études). Bien remplie MAIS propriétés vides: PPA (pas accès?), company linkedin, education, skills, url linkedin."
           },
           {
@@ -257,7 +257,7 @@
         "items": [
           {
             "element": "DB_MAP_Occupant",
-            "observation": "Même icône que Prestataire — risque de confusion visuelle. Base à moitié liée et champs peu renseignés. À clarifier avec vous lors de l'audit."
+            "observation": "Même icône que Prestataire, risque de confusion visuelle. Base à moitié liée et champs peu renseignés. À clarifier avec vous lors de l'audit."
           }
         ]
       },
@@ -292,7 +292,7 @@
         "pageName": "DB_MAP_Tâche (deep dive)",
         "items": [
           {
-            "element": "Schéma — propriétés",
+            "element": "Schéma, propriétés",
             "observation": "DB la plus importante pour remplacer Excel. Comparer propriété par propriété avec leur Excel."
           },
           {
@@ -362,7 +362,7 @@
         ]
       },
       {
-        "pageName": "Archi & Vue — Philosophie",
+        "pageName": "Archi & Vue, Philosophie",
         "items": [
           {
             "element": "Préférence utilisateur: vues",
